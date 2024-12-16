@@ -1,19 +1,23 @@
 {
-  "name": "boilerplate-cleanarchi",
+  "name": "playgit",
   "packageManager": "yarn@4.0.2",
   "scripts": {
-    "build": "tsoa spec-and-routes",
+    "start": "tsoa spec-and-routes",
     "dev": "concurrently 'nodemon' 'nodemon -x tsoa spec-and-routes'",
     "lint": "prettier --check .",
     "test": "jest --runInBand",
-    "typeorm": "env-cmd typeorm-ts-node-commonjs"
+    "build": "tsc && cp -R src dist/src/",
+    "start:prod": "node dist/src/index.js"
+  },
+  "prisma": {
+    "schema": "src/infrastructure/adapters/prisma/schema.prisma"
   },
   "devDependencies": {
     "@types/body-parser": "^1",
     "@types/express": "^5",
     "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.7",
-    "@types/node": "^22.9.3",
+    "@types/node": "^22.10.2",
     "@types/pg": "^8",
     "@types/promise.any": "^2",
     "@types/swagger-ui-express": "^4.1.7",
@@ -21,11 +25,14 @@
     "env-cmd": "^10.1.0",
     "jest": "^29.7.0",
     "nodemon": "^3.1.7",
+    "prisma": "^6.0.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@prisma/client": "^6.0.1",
     "@tsoa/runtime": "^6.5.1",
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.5",
@@ -37,8 +44,6 @@
     "swagger-ui-express": "^5.0.1",
     "tsoa": "^6.5.1",
     "tsyringe": "^4.8.0",
-    "typeorm": "^0.3.20",
-    "typeorm-naming-strategies": "^4.1.0",
     "winston": "^3.17.0",
     "zod": "^3.23.8"
   }
