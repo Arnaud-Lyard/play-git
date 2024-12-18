@@ -3,13 +3,10 @@ import 'reflect-metadata';
 import { randomUUID } from 'crypto';
 import { container } from 'tsyringe';
 
-import SignInUser from '../src/core/use-cases/sign-in-user.use-case';
-import { UserRepository } from '../src/core/ports/database.port';
-import Logger from '../src/core/ports/logger.port';
-import {
-  ExistingUser,
-  NotExistingUser,
-} from '../src/core/entities/user.entity';
+import SignInUser from '@core/use-cases/sign-in-user.use-case';
+import { UserRepository } from '@core/ports/database.port';
+import Logger from '@core/ports/logger.port';
+import { ExistingUser, NotExistingUser } from '@core/entities/user.entity';
 
 describe('SignInUser', () => {
   const notExistingUser = new NotExistingUser();

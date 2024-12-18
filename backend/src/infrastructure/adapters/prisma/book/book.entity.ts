@@ -1,19 +1,13 @@
-import { Book as BookCoreEntity } from '../../../../core/book.interface';
+import { Book as BookDomainEntity } from '@core/book.interface';
+import { Book as BookPrismaEntity } from '@prisma/client';
 class Book {
-  constructor(
-    id: string,
-    title: string,
-    summary: string,
-    author: string,
-    totalPages: number,
-    createdAt: Date,
-  ) {
-    this.id = id;
-    this.title = title;
-    this.summary = summary;
-    this.author = author;
-    this.totalPages = totalPages;
-    this.createdAt = createdAt;
+  constructor(book: BookPrismaEntity) {
+    this.id = book.id;
+    this.title = book.title;
+    this.summary = book.summary;
+    this.author = book.author;
+    this.totalPages = book.totalPages;
+    this.createdAt = book.createdAt;
   }
   id: string;
   title: string;
@@ -22,7 +16,7 @@ class Book {
   totalPages: number;
   createdAt: Date;
 
-  toDomainEntity(): BookCoreEntity {
+  toDomainEntity(): BookDomainEntity {
     return this.exclude(this, ['createdAt']);
   }
 

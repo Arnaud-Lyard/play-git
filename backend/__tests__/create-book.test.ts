@@ -3,10 +3,10 @@ import 'reflect-metadata';
 import { randomUUID } from 'crypto';
 import { container } from 'tsyringe';
 
-import CreateBook from '../src/core/use-cases/create-book.use-case';
-import { BookRepository } from '../src/core/ports/database.port';
-import Logger from '../src/core/ports/logger.port';
-import { Book } from '../src/core/book.interface';
+import CreateBook from '@core/use-cases/create-book.use-case';
+import { BookRepository } from '@core/ports/database.port';
+import Logger from '@core/ports/logger.port';
+import { Book } from '@core/book.interface';
 
 describe('CreateBook', () => {
   const mock__data: Partial<Book> = {

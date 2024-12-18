@@ -2,8 +2,8 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 
-import { RegisterRoutes } from '../../../build/routes';
-import swaggerDocument from '../../../build/swagger.json';
+import { RegisterRoutes } from '@build/routes';
+import swaggerDocument from '@build/swagger.json';
 
 import { errorHandler } from './error-handler';
 

@@ -1,4 +1,4 @@
-import { ExistingUser } from '../../../../core/entities/user.entity';
+import { ExistingUser } from '@core/entities/user.entity';
 
 class User {
   constructor(id: string, login: string, password: string, createdAt: Date) {

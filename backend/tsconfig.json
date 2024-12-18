@@ -13,7 +13,17 @@
     "strictPropertyInitialization": false,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": ["./src/core/*"],
+      "@infrastructure/*": ["./src/infrastructure/*"],
+      "@build/*": ["./build/*"],
+      "tsoa": ["node_modules/tsoa/dist"],
+      "tsoa/": ["node_modules/tsoa/dist/"]
+    }
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   }
 }
-//lib es2021

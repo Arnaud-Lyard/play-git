@@ -3,10 +3,10 @@ import 'reflect-metadata';
 import { randomUUID } from 'crypto';
 import { container } from 'tsyringe';
 
-import ListBooks from '../src/core/use-cases/list-books.use-case';
-import { BookRepository } from '../src/core/ports/database.port';
-import Logger from '../src/core/ports/logger.port';
-import { Book } from '../src/core/book.interface';
+import ListBooks from '@core/use-cases/list-books.use-case';
+import { BookRepository } from '@core/ports/database.port';
+import Logger from '@core/ports/logger.port';
+import { Book } from '@core/book.interface';
 
 describe('ListBooks', () => {
   const mock__data: Book[] = [

@@ -5,10 +5,10 @@ import {
   PostBooksOutputDto,
 } from './dto';
 
-import CreateBookUseCase from '../../../../core/use-cases/create-book.use-case';
-import DeleteBookUseCase from '../../../../core/use-cases/delete-book.use-case';
-import GetBookUseCase from '../../../../core/use-cases/get-book.use-case';
-import ListBooksUseCase from '../../../../core/use-cases/list-books.use-case';
+import CreateBookUseCase from '@core/use-cases/create-book.use-case';
+import DeleteBookUseCase from '@core/use-cases/delete-book.use-case';
+import GetBookUseCase from '@core/use-cases/get-book.use-case';
+import ListBooksUseCase from '@core/use-cases/list-books.use-case';
 
 export const list = (): Promise<GetBooksOutputDto> =>
   new ListBooksUseCase().execute();

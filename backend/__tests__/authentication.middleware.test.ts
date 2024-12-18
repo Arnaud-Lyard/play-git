@@ -2,11 +2,11 @@ import * as express from 'express';
 import 'reflect-metadata';
 import { container } from 'tsyringe';
 
-import { UserRepository } from '../src/core/ports/database.port';
-import { ExistingUser } from '../src/core/entities/user.entity';
+import { UserRepository } from '@core/ports/database.port';
+import { ExistingUser } from '@core/entities/user.entity';
 
-import { expressAuthentication } from '../src/infrastructure/api/middlewares/authentication.middleware';
-import { UnauthorizedError } from '../src/infrastructure/api/error-handler';
+import { expressAuthentication } from '@infrastructure/api/middlewares/authentication.middleware';
+import { UnauthorizedError } from '@infrastructure/api/error-handler';
 
 const mock__existingUser = new ExistingUser({ id: 'id-with-user-associated' });
 
@@ -18,10 +18,9 @@ const mockUserRepository = () => {
 };
 
 const mock__verifyAndDecodeUserAccessToken = jest.fn();
-container
-  .register<Partial<UserRepository>>('UserRepository', {
-    useValue: mockUserRepository(),
-  });
+container.register<Partial<UserRepository>>('UserRepository', {
+  useValue: mockUserRepository(),
+});
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -55,7 +54,7 @@ describe('Authentication middleware should reject', () => {
     mock__verifyAndDecodeUserAccessToken.mockReturnValue({
       iamId: 'iam-id-with-no-user-associated',
     });
-    
+
     await expect(expressAuthentication(request, 'jwt', [])).rejects.toEqual(
       new UnauthorizedError('INVALID_TOKEN'),
     );

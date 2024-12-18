@@ -3,9 +3,9 @@ import 'reflect-metadata';
 import { randomUUID } from 'crypto';
 import { container } from 'tsyringe';
 
-import DeleteBook from '../src/core/use-cases/delete-book.use-case';
-import { BookRepository } from '../src/core/ports/database.port';
-import Logger from '../src/core/ports/logger.port';
+import DeleteBook from '@core/use-cases/delete-book.use-case';
+import { BookRepository } from '@core/ports/database.port';
+import Logger from '@core/ports/logger.port';
 
 describe('DeleteBook', () => {
   // mock repository

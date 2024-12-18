@@ -1,12 +1,9 @@
 import * as express from 'express';
 import { container } from 'tsyringe';
 
-import { UserRepository } from '../../../core/ports/database.port';
-import { AuthenticatedContext } from '../../../core/ports/api.port';
-import {
-  ExistingUser,
-  NotExistingUser,
-} from '../../../core/entities/user.entity';
+import { UserRepository } from '@core/ports/database.port';
+import { AuthenticatedContext } from '@core/ports/api.port';
+import { ExistingUser, NotExistingUser } from '@core/entities/user.entity';
 
 import { UnauthorizedError } from '../error-handler';
 

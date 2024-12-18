@@ -1,13 +1,13 @@
 {
   "name": "playgit",
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "npm@10.9.2",
   "scripts": {
     "start": "tsoa spec-and-routes",
     "dev": "concurrently 'nodemon' 'nodemon -x tsoa spec-and-routes'",
     "lint": "prettier --check .",
     "test": "jest --runInBand",
-    "build": "tsc && cp -R src dist/src/",
-    "start:prod": "node dist/src/index.js"
+    "build": "tsc --build tsconfig.build.json",
+    "start:prod": "node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/src/index.js"
   },
   "prisma": {
     "schema": "src/infrastructure/adapters/prisma/schema.prisma"
@@ -28,6 +28,7 @@
     "prisma": "^6.0.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },

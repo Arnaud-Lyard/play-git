@@ -3,13 +3,10 @@ import 'reflect-metadata';
 import { randomUUID } from 'crypto';
 import { container } from 'tsyringe';
 
-import SignUpUser from '../src/core/use-cases/sign-up-user.use-case';
-import { UserRepository } from '../src/core/ports/database.port';
-import Logger from '../src/core/ports/logger.port';
-import {
-  ExistingUser,
-  NotExistingUser,
-} from '../src/core/entities/user.entity';
+import SignUpUser from '@core/use-cases/sign-up-user.use-case';
+import { UserRepository } from '@core/ports/database.port';
+import Logger from '@core/ports/logger.port';
+import { ExistingUser, NotExistingUser } from '@core/entities/user.entity';
 
 describe('SignUpUser', () => {
   const notExistingUser = new NotExistingUser();
@@ -34,9 +31,7 @@ describe('SignUpUser', () => {
   });
 
   it('should return an access token', async () => {
-    mock__create.mockResolvedValue(
-      new ExistingUser({ id: randomUUID() }),
-    );
+    mock__create.mockResolvedValue(new ExistingUser({ id: randomUUID() }));
     const body = {
       login: 'mylogin',
       password: 'mypassword',

@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
 
-import Logger from '../../core/ports/logger.port';
+import Logger from '@core/ports/logger.port';
 import loggerConfig from './winston-logger/winston-logger.config';
 import {
   LogLevel,

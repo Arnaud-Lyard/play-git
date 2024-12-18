@@ -1,8 +1,5 @@
-import { ExistingUser } from '../../../../core/entities/user.entity';
-import {
-  CreateUserInput,
-  UserRepository,
-} from '../../../../core/ports/database.port';
+import { ExistingUser } from '@core/entities/user.entity';
+import { CreateUserInput, UserRepository } from '@core/ports/database.port';
 import { PrismaClient } from '@prisma/client';
 import UserDBEntity from './user.entity';
 
