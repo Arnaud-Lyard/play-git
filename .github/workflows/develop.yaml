@@ -1,0 +1,32 @@
+name: Run tests and build app
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - run: |
+          cd backend
+          npm install
+
+      - run: |
+          cd backend
+          npm run test
+
+      - run: |
+          cd backend
+          npm run build
