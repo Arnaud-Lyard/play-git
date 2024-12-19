@@ -6,10 +6,11 @@ import { container } from 'tsyringe';
 import DeleteBook from '@core/use-cases/delete-book.use-case';
 import { BookRepository } from '@core/ports/database.port';
 import Logger from '@core/ports/logger.port';
+import { describe, it, test, expect, vi, beforeEach } from 'vitest';
 
 describe('DeleteBook', () => {
   // mock repository
-  const mock__delete = jest.fn();
+  const mock__delete = vi.fn();
   const mock__BookRepository = () => {
     return {
       delete: mock__delete,
@@ -23,7 +24,7 @@ describe('DeleteBook', () => {
   // mock logger
   container.register<Partial<Logger>>('Logger', {
     useValue: {
-      debug: jest.fn(),
+      debug: vi.fn(),
     },
   });
 

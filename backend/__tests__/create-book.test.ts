@@ -7,6 +7,7 @@ import CreateBook from '@core/use-cases/create-book.use-case';
 import { BookRepository } from '@core/ports/database.port';
 import Logger from '@core/ports/logger.port';
 import { Book } from '@core/book.interface';
+import { describe, it, test, expect, vi, beforeEach } from 'vitest';
 
 describe('CreateBook', () => {
   const mock__data: Partial<Book> = {
@@ -18,7 +19,7 @@ describe('CreateBook', () => {
   };
 
   // mock repository
-  const mock__create = jest.fn();
+  const mock__create = vi.fn();
   const mock__BookRepository = () => {
     return {
       create: mock__create,
@@ -32,7 +33,7 @@ describe('CreateBook', () => {
   // mock logger
   container.register<Partial<Logger>>('Logger', {
     useValue: {
-      debug: jest.fn(),
+      debug: vi.fn(),
     },
   });
 

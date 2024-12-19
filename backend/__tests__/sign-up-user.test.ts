@@ -7,12 +7,13 @@ import SignUpUser from '@core/use-cases/sign-up-user.use-case';
 import { UserRepository } from '@core/ports/database.port';
 import Logger from '@core/ports/logger.port';
 import { ExistingUser, NotExistingUser } from '@core/entities/user.entity';
+import { describe, it, test, expect, vi, beforeEach } from 'vitest';
 
 describe('SignUpUser', () => {
   const notExistingUser = new NotExistingUser();
 
   // mock repository
-  const mock__create = jest.fn();
+  const mock__create = vi.fn();
   const mock__UserRepository = () => {
     return {
       create: mock__create,
@@ -26,7 +27,7 @@ describe('SignUpUser', () => {
   // mock logger
   container.register<Partial<Logger>>('Logger', {
     useValue: {
-      debug: jest.fn(),
+      debug: vi.fn(),
     },
   });
 

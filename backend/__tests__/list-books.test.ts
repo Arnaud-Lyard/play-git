@@ -7,6 +7,7 @@ import ListBooks from '@core/use-cases/list-books.use-case';
 import { BookRepository } from '@core/ports/database.port';
 import Logger from '@core/ports/logger.port';
 import { Book } from '@core/book.interface';
+import { describe, it, test, expect, vi, beforeEach } from 'vitest';
 
 describe('ListBooks', () => {
   const mock__data: Book[] = [
@@ -27,7 +28,7 @@ describe('ListBooks', () => {
   ];
 
   // mock repository
-  const mock__list = jest.fn();
+  const mock__list = vi.fn();
   const mock__BookRepository = () => {
     return {
       list: mock__list,
@@ -41,7 +42,7 @@ describe('ListBooks', () => {
   // mock logger
   container.register<Partial<Logger>>('Logger', {
     useValue: {
-      debug: jest.fn(),
+      debug: vi.fn(),
     },
   });
 

@@ -7,6 +7,7 @@ import GetBook from '@core/use-cases/get-book.use-case';
 import { BookRepository } from '@core/ports/database.port';
 import Logger from '@core/ports/logger.port';
 import { Book } from '@core/book.interface';
+import { describe, it, test, expect, vi, beforeEach } from 'vitest';
 
 describe('GetBook', () => {
   const id: string = randomUUID();
@@ -19,7 +20,7 @@ describe('GetBook', () => {
   };
 
   // mock repository
-  const mock__findById = jest.fn();
+  const mock__findById = vi.fn();
   const mock__BookRepository = () => {
     return {
       findById: mock__findById,
@@ -33,7 +34,7 @@ describe('GetBook', () => {
   // mock logger
   container.register<Partial<Logger>>('Logger', {
     useValue: {
-      debug: jest.fn(),
+      debug: vi.fn(),
     },
   });
 

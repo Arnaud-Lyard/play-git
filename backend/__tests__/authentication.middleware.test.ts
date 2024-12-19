@@ -7,24 +7,25 @@ import { ExistingUser } from '@core/entities/user.entity';
 
 import { expressAuthentication } from '@infrastructure/api/middlewares/authentication.middleware';
 import { UnauthorizedError } from '@infrastructure/api/error-handler';
+import { describe, it, test, expect, vi, beforeEach } from 'vitest';
 
 const mock__existingUser = new ExistingUser({ id: 'id-with-user-associated' });
 
-const mock__findById = jest.fn();
+const mock__findById = vi.fn();
 const mockUserRepository = () => {
   return {
     findById: mock__findById,
   };
 };
 
-const mock__verifyAndDecodeUserAccessToken = jest.fn();
+const mock__verifyAndDecodeUserAccessToken = vi.fn();
 container.register<Partial<UserRepository>>('UserRepository', {
   useValue: mockUserRepository(),
 });
 
 beforeEach(() => {
-  jest.clearAllMocks();
-  jest.resetAllMocks();
+  vi.clearAllMocks();
+  vi.resetAllMocks();
 });
 
 describe('Authentication middleware should reject', () => {
